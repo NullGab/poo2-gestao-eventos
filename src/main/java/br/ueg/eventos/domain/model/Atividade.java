@@ -2,7 +2,7 @@ package br.ueg.eventos.domain.model;
 
 import br.ueg.eventos.domain.exception.DomainRuleException;
 import java.util.Collections;
-import java.util.LocalDateTime;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +14,7 @@ public class Atividade {
     private LocalDateTime dataInicio;
     private LocalDateTime dataFim;
     private String local;
-    private List<VinculoPessoaAtividade> pessoasVinculadas;
+    //private List<VinculoPessoaAtividade> pessoasVinculadas;
 
     protected Atividade(String id, String titulo, String descricao, String tipo, LocalDateTime dataInicio, LocalDateTime dataFim, String local) {
         if(textOuVazio(id)) {
@@ -47,20 +47,20 @@ public class Atividade {
         this.dataInicio = dataInicio;
         this.dataFim = dataFim;
         this.local = local;
-        this.pessoasVinculadas = new ArrayList<>();
+       // this.pessoasVinculadas = new ArrayList<>();
 
     }
 
-    public Atividade criarNova(String id, String titulo, String descricao, String tipo, LocalDateTime dataInicio, LocalDateTime dataFim, String local){
-        return Atividade(id, titulo, descricao, tipo, dataInicio, dataFim, local, pessoasVinculadas);
-    }
+    //public Atividade criarNova(String id, String titulo, String descricao, String tipo, LocalDateTime dataInicio, LocalDateTime dataFim, String local){
+     //   return Atividade(id, titulo, descricao, tipo, dataInicio, dataFim, local, pessoasVinculadas);
+    //}
 
-    public void vincularPessoa(VinculoPessoaAtividade vinculo) {
+    /*public void vincularPessoa(VinculoPessoaAtividade vinculo) {
         if(vinculo == null) {
             throw new DomainRuleException("O vínculo de pessoa não pode ser nulo.");
         }
         this.pessoasVinculadas.add(vinculo);
-    }
+    } */
 
     public boolean conflitaCom(Atividade outra) {
         if (outra == null || !this.local.equals(outra.local)) {
@@ -81,9 +81,9 @@ public class Atividade {
         return descricao;
     }
 
-    public Tipo getTipo() {
-        return tipo;
-    }
+    //public Tipo getTipo() {
+     //   return tipo;
+    //}
 
     public LocalDateTime getDataInicio() {
         return dataInicio;

@@ -1,6 +1,8 @@
 package br.ueg.eventos.domain.model;
-
 import br.ueg.eventos.domain.exception.DomainRuleException;
+import br.ueg.eventos.domain.util.validator.Validador;
+import br.ueg.eventos.domain.util.validator.RegraTextoObrigatorio;
+import br.ueg.eventos.domain.util.validator.RegraObjetoNaoNulo;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;

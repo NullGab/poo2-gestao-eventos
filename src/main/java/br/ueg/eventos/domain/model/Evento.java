@@ -96,7 +96,7 @@ public class Evento {
     if (this.situacao == StatusEvento.ENCERRADO) {
       throw new DomainRuleException("Não é possível adicionar atividades em um evento encerrado.");
     }
-    if (novaAtividade.getDataInicio().isBefore(this.dataInicio) || novaAtividade.getDataFim().isAfter(this.dataFim)) {
+    if (novaAtividade.getDataInicio().isBefore(this.dataInicio.toLocalDateTime()) || novaAtividade.getDataFim().isAfter(this.dataFim.toLocalDateTime())) {
       throw new DomainRuleException("O horário da atividade precisa estar dentro do período do evento.");
     }
     for (Atividade atual : atividades){

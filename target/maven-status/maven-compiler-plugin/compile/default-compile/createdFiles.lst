@@ -1,0 +1,14 @@
+br/ueg/eventos/domain/model/Evento.class
+br/ueg/eventos/domain/model/Inscricao.class
+br/ueg/eventos/domain/util/validator/RegraEmailValido.class
+br/ueg/eventos/domain/model/Atividade.class
+br/ueg/eventos/domain/model/TipoEvento.class
+br/ueg/eventos/domain/util/validator/RegraDeNegocio.class
+br/ueg/eventos/domain/model/StatusEvento.class
+br/ueg/eventos/domain/util/validator/Validador.class
+br/ueg/eventos/domain/util/validator/RegraTextoObrigatorio.class
+br/ueg/eventos/domain/model/StatusInscricao.class
+br/ueg/eventos/domain/model/Usuario.class
+br/ueg/eventos/domain/util/validator/RegraObjetoNaoNulo.class
+br/ueg/eventos/domain/model/ModalidadeEvento.class
+br/ueg/eventos/domain/exception/DomainRuleException.class

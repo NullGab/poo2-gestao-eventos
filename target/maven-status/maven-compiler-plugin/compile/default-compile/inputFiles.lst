@@ -1,3 +1,4 @@
+/home/gabriel/poo2-gestao-eventos/src/main/java/br/ueg/eventos/domain/exception/DomainRuleException.java
 /home/gabriel/poo2-gestao-eventos/src/main/java/br/ueg/eventos/domain/model/Atividade.java
 /home/gabriel/poo2-gestao-eventos/src/main/java/br/ueg/eventos/domain/model/Evento.java
 /home/gabriel/poo2-gestao-eventos/src/main/java/br/ueg/eventos/domain/model/Inscricao.java
@@ -7,12 +8,13 @@
 /home/gabriel/poo2-gestao-eventos/src/main/java/br/ueg/eventos/domain/model/PoliticaFrequencia.java
 /home/gabriel/poo2-gestao-eventos/src/main/java/br/ueg/eventos/domain/model/Questionario.java
 /home/gabriel/poo2-gestao-eventos/src/main/java/br/ueg/eventos/domain/model/RegistroFrequencia.java
-/home/gabriel/poo2-gestao-eventos/src/main/java/br/ueg/eventos/domain/model/RegraDeNegocio.java
-/home/gabriel/poo2-gestao-eventos/src/main/java/br/ueg/eventos/domain/model/RegraEmailValido.java
-/home/gabriel/poo2-gestao-eventos/src/main/java/br/ueg/eventos/domain/model/RegraObjetoNaoNulo.java
-/home/gabriel/poo2-gestao-eventos/src/main/java/br/ueg/eventos/domain/model/RegraTextoObrigatorio.java
 /home/gabriel/poo2-gestao-eventos/src/main/java/br/ueg/eventos/domain/model/Resposta.java
 /home/gabriel/poo2-gestao-eventos/src/main/java/br/ueg/eventos/domain/model/StatusEvento.java
+/home/gabriel/poo2-gestao-eventos/src/main/java/br/ueg/eventos/domain/model/StatusInscricao.java
 /home/gabriel/poo2-gestao-eventos/src/main/java/br/ueg/eventos/domain/model/TipoEvento.java
 /home/gabriel/poo2-gestao-eventos/src/main/java/br/ueg/eventos/domain/model/Usuario.java
-/home/gabriel/poo2-gestao-eventos/src/main/java/br/ueg/eventos/domain/model/Validador.java
+/home/gabriel/poo2-gestao-eventos/src/main/java/br/ueg/eventos/domain/util/validator/RegraDeNegocio.java
+/home/gabriel/poo2-gestao-eventos/src/main/java/br/ueg/eventos/domain/util/validator/RegraEmailValido.java
+/home/gabriel/poo2-gestao-eventos/src/main/java/br/ueg/eventos/domain/util/validator/RegraObjetoNaoNulo.java
+/home/gabriel/poo2-gestao-eventos/src/main/java/br/ueg/eventos/domain/util/validator/RegraTextoObrigatorio.java
+/home/gabriel/poo2-gestao-eventos/src/main/java/br/ueg/eventos/domain/util/validator/Validador.java

@@ -1,4 +1,4 @@
-package br.edu.eventos.domain.model;
+package br.ueg.eventos.domain.model;
 
 public enum ModalidadeEvento {
   PRESENCIAL,
