@@ -1,9 +1,9 @@
 package br.ueg.eventos.domain.model;
 
 import br.ueg.eventos.domain.exception.DomainRuleException;
-import java.util.Colletions;
-import java.util.LocalDaTime;
-import java.util.Arraylist;
+import java.util.Collections;
+import java.util.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Atividade {
@@ -11,12 +11,12 @@ public class Atividade {
     private String titulo;
     private String descricao;
     private String tipo;
-    private LocalDataTime dataInicio;
-    private LocalDataTime dataFim;
+    private LocalDateTime dataInicio;
+    private LocalDateTime dataFim;
     private String local;
     private List<VinculoPessoaAtividade> pessoasVinculadas;
 
-    Protected Atividade(String id, String titulo, String descricao, String tipo, LocalDataTime dataInicio, LocalDataTime dataFim, String local) {
+    protected Atividade(String id, String titulo, String descricao, String tipo, LocalDateTime dataInicio, LocalDateTime dataFim, String local) {
         if(textOuVazio(id)) {
             throw new DomainRuleException("Id da entidade não pode ser nulo ou vazio."); 
         }
@@ -51,7 +51,7 @@ public class Atividade {
 
     }
 
-    public Atividade criarNova(String id, String titulo, String descricao, String tipo, LocalDataTime dataInicio, LocalDataTime dataFim, String local){
+    public Atividade criarNova(String id, String titulo, String descricao, String tipo, LocalDateTime dataInicio, LocalDateTime dataFim, String local){
         return Atividade(id, titulo, descricao, tipo, dataInicio, dataFim, local, pessoasVinculadas);
     }
 
@@ -85,11 +85,11 @@ public class Atividade {
         return tipo;
     }
 
-    public LocalDataTime getDataInicio() {
+    public LocalDateTime getDataInicio() {
         return dataInicio;
     }
 
-    public LocalDataTime getDataFim() {
+    public LocalDateTime getDataFim() {
         return dataFim;
     }
 

@@ -1,9 +1,9 @@
 package br.ueg.eventos.domain.model;
 
 import br.ueg.eventos.domain.exception.DomainRuleException;
-import java.util.Colletions;
-import java.util.LocalDaTime;
-import java.util.Arraylist;
+import java.util.Collections;
+import java.util.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Usuario {

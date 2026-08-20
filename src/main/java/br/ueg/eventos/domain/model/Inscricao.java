@@ -54,9 +54,4 @@ public class Inscricao {
 
     this.atividadesSelecionadas.add(novaAtividade);
   }
-
-  public List<Atividade> getAtividadesSelecionadas() {
-    return Collections.unmodifiableList(this.atividadesSelecionadas);
-  }
-
 }
