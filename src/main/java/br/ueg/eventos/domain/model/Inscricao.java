@@ -33,6 +33,9 @@ public class Inscricao {
     this.situacao = StatusInscricao.PENDENTE; 
     this.atividadesSelecionadas = new ArrayList<>();
   }
+  public StatusInscricao getSituacao() {
+    return this.situacao;
+  }
 
   public List<Atividade> getAtividadesSelecionadas() {
     return Collections.unmodifiableList(this.atividadesSelecionadas);
