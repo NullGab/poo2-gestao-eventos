@@ -98,7 +98,7 @@ public class Atividade {
     }
 
     protected Boolean textOuVazio(String valor) {
-        return valor == null || valor.isBlank()
+        return valor == null || valor.isBlank();
     }
 
 }
