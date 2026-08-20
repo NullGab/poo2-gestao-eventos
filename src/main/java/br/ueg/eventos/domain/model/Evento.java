@@ -20,38 +20,24 @@ public class Evento {
 
 
   protected Evento(String id, String titulo, String descricao, TipoEvento tipo, ModalidadeEvento modalidade, String local, ZonedDateTime dataInicio, ZonedDateTime dataFim) {
-    if (textOuVazio(id)) {
-      throw new DomainRuleException("Id da entidade não pode ser nulo ou vazio.");
-    }
-    
-    if (textOuVazio(titulo)) {
-      throw new DomainRuleException("O título do evento é obrigatório.");
-    }
+    Validador.validar(
+        new RegraTextoObrigatorio(id, "Id da entidade não pode ser nulo ou vazio."),
+        new RegraTextoObrigatorio(titulo, "O título do evento é obrigatório."),
+        new RegraTextoObrigatorio(descricao, "Informe a descrição do evento."),
+        new RegraObjetoNaoNulo(tipo, "Informe o tipo do evento."),
+        new RegraTextoObrigatorio(local, "O local não pode estar vazio."),
+        new RegraObjetoNaoNulo(categoria, "A categoria do Evento precisa ser definida!."),
+        new RegraObjetoNaoNulo(modalidade, "A modalidade do Evento precisa ser selecionada!."),
 
-    if(textOuVazio(descricao)) {
-      throw new DomainRuleException("O Evento precisa ter uma descrição!");
-    }
-
-    if(tipo == null) {
-      throw new DomainRuleException("A categoria do Evento precisa ser definia!.");
-    }
-
-    if(modalidade == null) {
-      throw new DomainRuleException("A modalidade do Evento precisa ser selecionada!.");
-    }
-
-    if(textOuVazio(local)) {
-      throw new DomainRuleException("É preciso definir um local para o evento");
-    }
-
+        ); 
     if (dataFim == null || dataInicio == null) {
       throw new DomainRuleException("As datas de iníco e término são obrigatórias!");
     }
-    
+
     if (dataFim.isBefore(dataInicio)) {
       throw new DomainRuleException("A data de término não pode ser anterior à data de início.");
     }
-    
+
     this.id = id;
     this.titulo = titulo;
     this.descricao = descricao;
@@ -85,10 +71,10 @@ public class Evento {
   }
 
   public void cancelar() {
-      this.situacao = StatusEvento.CANCELADO;
+    this.situacao = StatusEvento.CANCELADO;
   }
   //=======================================================================================
-  
+
   public void adicionarAtividade(Atividade novaAtividade) {
     if (novaAtividade == null) {
       throw new DomainRuleException("A atividade não pode ser nula.");
