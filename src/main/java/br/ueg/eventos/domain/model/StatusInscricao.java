@@ -4,5 +4,4 @@ public enum StatusInscricao {
     PENDENTE,
     CONFIRMADA,
     CANCELADA,
-    LISTA_ESPERA
 }
