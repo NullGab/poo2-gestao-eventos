@@ -1,3 +1,6 @@
+package br.ueg.eventos.domain.util.validator;
+import br.ueg.eventos.domain.exception.DomainRuleException;
+
 public class RegraEmailValido implements RegraDeNegocio {
   private final String email;
 
