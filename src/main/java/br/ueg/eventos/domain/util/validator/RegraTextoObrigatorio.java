@@ -1,3 +1,7 @@
+package br.ueg.eventos.domain.util.validator;
+
+import br.ueg.eventos.domain.exception.DomainRuleException;
+
 public class RegraTextoObrigatorio implements RegraDeNegocio {
   private final String texto;
   private final String mensagemErro;

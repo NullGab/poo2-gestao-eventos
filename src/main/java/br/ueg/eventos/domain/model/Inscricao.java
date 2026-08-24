@@ -1,6 +1,8 @@
 package br.ueg.eventos.domain.model;
-
 import br.ueg.eventos.domain.exception.DomainRuleException;
+import br.ueg.eventos.domain.util.validator.Validador;
+import br.ueg.eventos.domain.util.validator.RegraTextoObrigatorio;
+import br.ueg.eventos.domain.util.validator.RegraObjetoNaoNulo;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -31,6 +33,9 @@ public class Inscricao {
     this.situacao = StatusInscricao.PENDENTE; 
     this.atividadesSelecionadas = new ArrayList<>();
   }
+  public StatusInscricao getSituacao() {
+    return this.situacao;
+  }
 
   public List<Atividade> getAtividadesSelecionadas() {
     return Collections.unmodifiableList(this.atividadesSelecionadas);
@@ -54,9 +59,4 @@ public class Inscricao {
 
     this.atividadesSelecionadas.add(novaAtividade);
   }
-
-  public List<Atividade> getAtividadesSelecionadas() {
-    return Collections.unmodifiableList(this.atividadesSelecionadas);
-  }
-
 }
