@@ -1,5 +1,8 @@
 package br.ueg.eventos.domain.model;
 
+import br.ueg.eventos.domain.util.validator.Validador;
+import br.ueg.eventos.domain.util.validator.RegraTextoObrigatorio;
+import br.ueg.eventos.domain.util.validator.RegraObjetoNaoNulo;
 import br.ueg.eventos.domain.exception.DomainRuleException;
 import java.util.Collections;
 import java.util.ArrayList;
@@ -20,15 +23,13 @@ public class Evento {
 
 
   protected Evento(String id, String titulo, String descricao, TipoEvento tipo, ModalidadeEvento modalidade, String local, ZonedDateTime dataInicio, ZonedDateTime dataFim) {
-    Validador.validar(
+    Validador.avaliar(
         new RegraTextoObrigatorio(id, "Id da entidade não pode ser nulo ou vazio."),
         new RegraTextoObrigatorio(titulo, "O título do evento é obrigatório."),
         new RegraTextoObrigatorio(descricao, "Informe a descrição do evento."),
         new RegraObjetoNaoNulo(tipo, "Informe o tipo do evento."),
         new RegraTextoObrigatorio(local, "O local não pode estar vazio."),
-        new RegraObjetoNaoNulo(categoria, "A categoria do Evento precisa ser definida!."),
-        new RegraObjetoNaoNulo(modalidade, "A modalidade do Evento precisa ser selecionada!."),
-
+        new RegraObjetoNaoNulo(modalidade, "A modalidade do Evento precisa ser selecionada!.")
         ); 
     if (dataFim == null || dataInicio == null) {
       throw new DomainRuleException("As datas de iníco e término são obrigatórias!");
@@ -82,7 +83,7 @@ public class Evento {
     if (this.situacao == StatusEvento.ENCERRADO) {
       throw new DomainRuleException("Não é possível adicionar atividades em um evento encerrado.");
     }
-    if (novaAtividade.getDataInicio().isBefore(this.dataInicio.toLocalDateTime()) || novaAtividade.getDataFim().isAfter(this.dataFim.toLocalDateTime())) {
+    if (novaAtividade.getDataInicio().isBefore(this.dataInicio) || novaAtividade.getDataFim().isAfter(this.dataFim)) {
       throw new DomainRuleException("O horário da atividade precisa estar dentro do período do evento.");
     }
     for (Atividade atual : atividades){

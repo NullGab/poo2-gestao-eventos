@@ -1,5 +1,9 @@
 package br.ueg.eventos.domain.model;
 
+import br.ueg.eventos.domain.util.validator.Validador;
+import br.ueg.eventos.domain.util.validator.RegraTextoObrigatorio;
+import br.ueg.eventos.domain.util.validator.RegraObjetoNaoNulo;
+import br.ueg.eventos.domain.util.validator.RegraInicioFim;
 import br.ueg.eventos.domain.exception.DomainRuleException;
 import java.util.Collections;
 import java.time.ZonedDateTime;
@@ -8,15 +12,15 @@ import java.util.List;
 
 public class Atividade {
     private final String id;
+    private final TipoAtividade tipo; 
     private String titulo;
     private String descricao;
-    private String tipo;
     private ZonedDateTime dataInicio;
     private ZonedDateTime dataFim;
     private String local;
     private List<VinculoPessoaAtividade> pessoasVinculadas;
 
-    protected Atividade(String id, String titulo, String descricao, String tipo, ZonedDateTime dataInicio, ZonedDateTime dataFim, String local) {
+    protected Atividade(String id, String titulo, String descricao, TipoAtividade tipo, ZonedDateTime dataInicio, ZonedDateTime dataFim, String local) {
       Validador.avaliar(
           new RegraTextoObrigatorio(id, "Id da entidade não pode ser nulo ou vazio."),
           new RegraTextoObrigatorio(titulo, "O título da atividade é obrigatória."),
@@ -37,8 +41,8 @@ public class Atividade {
 
     }
 
-    public Atividade criarNova(String id, String titulo, String descricao, String tipo, ZonedDateTime dataInicio, ZonedDateTime dataFim, String local){
-        return Atividade(id, titulo, descricao, tipo, dataInicio, dataFim, local, pessoasVinculadas);
+    public static Atividade criarNova(String id, String titulo, String descricao, TipoAtividade tipo, ZonedDateTime dataInicio, ZonedDateTime dataFim, String local){
+      return new Atividade(id, titulo, descricao, tipo, dataInicio, dataFim, local);
     }
 
     public void vincularPessoa(VinculoPessoaAtividade vinculo) {
@@ -67,7 +71,7 @@ public class Atividade {
         return descricao;
     }
 
-    public Tipo getTipo() {
+    public TipoAtividade getTipo() {
         return tipo;
     }
 
