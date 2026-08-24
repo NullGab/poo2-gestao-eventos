@@ -3,7 +3,7 @@ package br.ueg.eventos.domain.model;
 import br.ueg.eventos.domain.exception.DomainRuleException;
 import br.ueg.eventos.domain.util.validator.RegraTextoObrigatorio;
 import br.ueg.eventos.domain.util.validator.RegraObjetoNaoNulo;
-import br.ueg.eventos.domain.util.validator.Validar;
+import br.ueg.eventos.domain.util.validator.Validador;
 import java.time.ZonedDateTime;
 
 public class RegistroFrequencia { 
@@ -16,7 +16,7 @@ public class RegistroFrequencia {
     private String responsavel; 
 
     public RegistroFrequencia(String participante, String atividade, MetodoFrequencia metodoFrequencia, String responsavel) {
-        Validar.avaliar(
+        Validador.avaliar(
             new RegraTextoObrigatorio(participante, "O participante é obrigatório."),
             new RegraTextoObrigatorio(atividade, "A atividade é obrigatória."),
             new RegraObjetoNaoNulo(metodoFrequencia, "O método de frequência é obrigatório.")
@@ -31,26 +31,26 @@ public class RegistroFrequencia {
         this.statusFrequencia = StatusFrequencia.PENDENTE; 
     }
     
-    //==========Validar Registro Frequencia===================
-    public void validaRegistroManual() {
+    //==========Validador Registro Frequencia===================
+    public void ValidadoregistroManual() {
         if (this.statusFrequencia != StatusFrequencia.PENDENTE) {
-            throw new DomainRuleException("Não é possível validar: o registro não está pendente.");
+            throw new DomainRuleException("Não é possível Validador: o registro não está pendente.");
         }
 
         if (this.metodoFrequencia != MetodoFrequencia.MANUAL) {
             throw new DomainRuleException("Este registro não é manual.");
         }
 
-        Validar.avaliar(
+        Validador.avaliar(
             new RegraTextoObrigatorio(this.responsavel, "A identificação do responsável é obrigatória no registro manual.")
         );
         
         this.statusFrequencia = StatusFrequencia.PRESENTE;
     }
 
-    public void validaRegistroQRCode() {
+    public void ValidadoregistroQRCode() {
         if (this.statusFrequencia != StatusFrequencia.PENDENTE) {
-            throw new DomainRuleException("Não é possível validar: o registro não está pendente.");
+            throw new DomainRuleException("Não é possível Validador: o registro não está pendente.");
         }
 
         if (this.metodoFrequencia != MetodoFrequencia.QRCODE) {
