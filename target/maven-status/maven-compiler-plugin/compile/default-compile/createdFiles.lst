@@ -21,6 +21,7 @@ br/ueg/eventos/domain/util/validator/RegraTextoObrigatorio.class
 br/ueg/eventos/domain/model/StatusInscricao.class
 br/ueg/eventos/domain/model/PoliticaCheckInUnico.class
 br/ueg/eventos/domain/util/validator/RegraObjetoNaoNulo.class
+br/ueg/eventos/domain/model/Certificado.class
 br/ueg/eventos/domain/model/PapelNaAtividade.class
 br/ueg/eventos/domain/model/RegistroFrequencia.class
 br/ueg/eventos/domain/model/ModalidadeEvento.class
