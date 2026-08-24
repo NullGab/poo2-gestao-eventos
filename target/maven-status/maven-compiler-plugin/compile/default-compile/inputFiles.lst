@@ -1,6 +1,7 @@
 /home/gabriel/poo2-gestao-eventos/src/main/java/br/ueg/eventos/domain/exception/DomainRuleException.java
 /home/gabriel/poo2-gestao-eventos/src/main/java/br/ueg/eventos/domain/model/Atividade.java
 /home/gabriel/poo2-gestao-eventos/src/main/java/br/ueg/eventos/domain/model/Evento.java
+/home/gabriel/poo2-gestao-eventos/src/main/java/br/ueg/eventos/domain/model/FuncaoUsuario.java
 /home/gabriel/poo2-gestao-eventos/src/main/java/br/ueg/eventos/domain/model/Inscricao.java
 /home/gabriel/poo2-gestao-eventos/src/main/java/br/ueg/eventos/domain/model/MetodoFrequencia.java
 /home/gabriel/poo2-gestao-eventos/src/main/java/br/ueg/eventos/domain/model/ModalidadeEvento.java

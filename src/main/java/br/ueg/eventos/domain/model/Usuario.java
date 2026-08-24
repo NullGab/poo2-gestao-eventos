@@ -21,13 +21,17 @@ public class Usuario {
         new RegraTextoObrigatorio(id, "O ID do usuário não pode ser vazio."),
         new RegraTextoObrigatorio(nome, "O Nome é obrigatório."),
         new RegraEmailValido(email)
-    );
+        );
 
     this.senhaHash = senhaHash;
     this.id = id; 
     this.nome = nome;
     this.email = email;
     this.funcoes.add(FuncaoUsuario.PARTICIPANTE);
+  }
+
+  public static Usuario registrarNovo(String id, String nome, String email, String senhaHash) {
+    return new Usuario(id, nome, email, senhaHash);
   }
 
   public void atribuiFuncao(FuncaoUsuario funcao) {
@@ -38,7 +42,7 @@ public class Usuario {
 
   public void removerFuncao(FuncaoUsuario funcao) {
     if (funcao == FuncaoUsuario.PARTICIPANTE && this.funcoes.size() == 1) {
-      throw new IllegalStateException("O usuário precisa ter pelo menos um papel");
+      throw new DomainRuleException("O usuário precisa ter pelo menos um papel");
     }
     this.funcoes.remove(funcao);
   }

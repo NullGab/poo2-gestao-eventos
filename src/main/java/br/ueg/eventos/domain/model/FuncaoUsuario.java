@@ -3,5 +3,6 @@ package br.ueg.eventos.domain.model;
 public enum FuncaoUsuario {
     ADMINISTRADOR,
     PARTICIPANTE,
-    ORGANIZADOR
+    ORGANIZADOR,
+    OUVINTE 
 }
