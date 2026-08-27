@@ -19,11 +19,9 @@ public class Usuario {
 
   protected Usuario (String id, String nome, String email, String senhaHash) {
     Validador.avaliar(
-        new RegraTextoObrigatorio(id, "O ID do usuário não pode ser vazio."),
-        new RegraTextoObrigatorio(nome, "O Nome é obrigatório."),
-        new RegraEmailValido(email)
-        );
-
+      new RegraTextoObrigatorio(id, "O ID do usuário não pode ser vazio."),
+      new RegraTextoObrigatorio(nome, "O Nome é obrigatório."),
+      new RegraEmailValido(email));
     this.senhaHash = senhaHash;
     this.id = id; 
     this.nome = nome;

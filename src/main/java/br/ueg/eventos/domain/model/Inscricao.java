@@ -3,7 +3,7 @@ import br.ueg.eventos.domain.exception.DomainRuleException;
 import br.ueg.eventos.domain.util.validator.Validador;
 import br.ueg.eventos.domain.util.validator.RegraTextoObrigatorio;
 import br.ueg.eventos.domain.util.validator.RegraObjetoNaoNulo;
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
 public class Inscricao {
 
   private final String id;
-  private final LocalDateTime dataHoraRegistro;
+  private final ZonedDateTime dataHoraRegistro;
 
   private Usuario participante;
   private Evento evento;
@@ -29,7 +29,7 @@ public class Inscricao {
     this.id = id;
     this.participante = participante;
     this.evento = evento;
-    this.dataHoraRegistro = LocalDateTime.now();
+    this.dataHoraRegistro = ZonedDateTime.now();
     this.situacao = StatusInscricao.PENDENTE; 
     this.atividadesSelecionadas = new ArrayList<>();
   }
@@ -51,12 +51,30 @@ public class Inscricao {
   public void confirmar() {
     this.situacao = StatusInscricao.CONFIRMADA;
   }
+  public static Inscricao criarNova(String id, Usuario participante, Evento evento) {
+    return new Inscricao(id, participante, evento);
+  }
 
   public void adicionarAtividade(Atividade novaAtividade) {
     Validador.avaliar(new RegraObjetoNaoNulo(novaAtividade, "A atividade é obrigatória."));
-    
-    // TODO: tenho que fazer uma checagem de horarios em conflito aqui, vai ficar pra depois tho
 
+    for (Atividade atual : atividadesSelecionadas) {
+      if (atual.conflitaCom(novaAtividade)) {
+        throw new DomainRuleException("Esta atividade conflita com outra já selecionada na sua agenda.");
+      }
+    }
     this.atividadesSelecionadas.add(novaAtividade);
+  }
+  public String getId() { 
+    return id; 
+  }
+  public Usuario getParticipante() { 
+    return participante; 
+  }
+  public Evento getEvento() { 
+    return evento; 
+  }
+  public ZonedDateTime getDataHoraRegistro() { 
+    return dataHoraRegistro; 
   }
 }

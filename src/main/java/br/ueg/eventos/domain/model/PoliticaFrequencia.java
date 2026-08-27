@@ -2,6 +2,7 @@ package br.ueg.eventos.domain.model;
 
 import java.util.List;
 
+
 public interface PoliticaFrequencia {
   boolean validarFrequencia(List<RegistroFrequencia> registrosDoParticipante);
 }
