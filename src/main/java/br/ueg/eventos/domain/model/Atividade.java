@@ -17,31 +17,33 @@ public class Atividade {
     private String descricao;
     private ZonedDateTime dataInicio;
     private ZonedDateTime dataFim;
-    private String local;
+    private Local local;
     private List<VinculoPessoaAtividade> pessoasVinculadas;
 
-    protected Atividade(String id, String titulo, String descricao, TipoAtividade tipo, ZonedDateTime dataInicio, ZonedDateTime dataFim, String local) {
+    protected Atividade(String id, String titulo, String descricao, TipoAtividade tipo, ZonedDateTime dataInicio, ZonedDateTime dataFim, Local local) {
       Validador.avaliar(
           new RegraTextoObrigatorio(id, "Id da entidade não pode ser nulo ou vazio."),
           new RegraTextoObrigatorio(titulo, "O título da atividade é obrigatória."),
           new RegraTextoObrigatorio(descricao, "Informe a descrição da atividade."),
           new RegraObjetoNaoNulo(tipo, "Informe o tipo da atividade."),
-          new RegraTextoObrigatorio(local, "O local não pode estar vazio."),
+          new RegraObjetoNaoNulo(local, "O local não pode estar vazio."),
           new RegraObjetoNaoNulo(dataInicio, "A data de inicio nao pode estar vazia."),
           new RegraObjetoNaoNulo(dataFim, "A data final nao pode estar vazia."),
           new RegraInicioFim(dataInicio, dataFim)
-          );   
+      );
+
         this.id = id;
         this.titulo = titulo;
+        this.descricao = descricao;
         this.tipo = tipo;
         this.dataInicio = dataInicio;
         this.dataFim = dataFim;
         this.local = local;
-       this.pessoasVinculadas = new ArrayList<>();
+        this.pessoasVinculadas = new ArrayList<>();
 
     }
 
-    public static Atividade criarNova(String id, String titulo, String descricao, TipoAtividade tipo, ZonedDateTime dataInicio, ZonedDateTime dataFim, String local){
+    public static Atividade criarNova(String id, String titulo, String descricao, TipoAtividade tipo, ZonedDateTime dataInicio, ZonedDateTime dataFim, Local local){
       return new Atividade(id, titulo, descricao, tipo, dataInicio, dataFim, local);
     }
 
@@ -53,39 +55,26 @@ public class Atividade {
     } 
 
     public boolean conflitaCom(Atividade outra) {
-        if (outra == null || !this.local.equals(outra.local)) {
+        if (!this.local.getId().equals(outra.local.getId())) {
             return false;
         }
+
         return this.dataInicio.isBefore(outra.dataFim) && outra.dataInicio.isBefore(this.dataFim);
     }
 
-    public String getId() {
-        return id;
-    }
+    public String getId() { return id; }
 
-    public String getTitulo() {
-        return titulo;
-    }
+    public String getTitulo() { return titulo; }
 
-    public String getDescricao() {
-        return descricao;
-    }
+    public String getDescricao() { return descricao; }
 
-    public TipoAtividade getTipo() {
-        return tipo;
-    }
+    public TipoAtividade getTipo() { return tipo; }
 
-    public ZonedDateTime getDataInicio() {
-        return dataInicio;
-    }
+    public ZonedDateTime getDataInicio() { return dataInicio; }
 
-    public ZonedDateTime getDataFim() {
-        return dataFim;
-    }
+    public ZonedDateTime getDataFim() { return dataFim; }
 
-    public String getLocal() {
-        return local;
-    }
+    public Local getLocal() { return local; }
 
     protected Boolean textOuVazio(String valor) {
         return valor == null || valor.isBlank();
