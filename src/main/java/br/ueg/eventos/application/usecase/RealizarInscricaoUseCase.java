@@ -1,9 +1,9 @@
-package br.ueg.eventos.application.usecases;
+package br.ueg.eventos.application.usecase;
 
-import br.ueg.eventos.application.ports.in.RealizarInscricaoPort;
-import br.ueg.eventos.application.ports.out.EventoRepositoryPort;
-import br.ueg.eventos.application.ports.out.InscricaoRepositoryPort;
-import br.ueg.eventos.application.ports.out.UsuarioRepositoryPort;
+import br.ueg.eventos.application.port.in.RealizarInscricaoPort;
+import br.ueg.eventos.application.port.out.EventoRepositoryPort;
+import br.ueg.eventos.application.port.out.InscricaoRepositoryPort;
+import br.ueg.eventos.application.port.out.UsuarioRepositoryPort;
 import br.ueg.eventos.domain.exception.DomainRuleException;
 import br.ueg.eventos.domain.model.Evento;
 import br.ueg.eventos.domain.model.Inscricao;
@@ -19,7 +19,8 @@ public class RealizarInscricaoUseCase implements RealizarInscricaoPort {
     private final UsuarioRepositoryPort usuarioRepository;
     private final EventoRepositoryPort eventoRepository;
 
-    public RealizarInscricaoUseCase(InscricaoRepositoryPort inscricaoRepository,UsuarioRepositoryPort usuarioRepository,EventoRepositoryPort eventoRepository) {
+    public RealizarInscricaoUseCase(InscricaoRepositoryPort inscricaoRepository,
+            UsuarioRepositoryPort usuarioRepository,EventoRepositoryPort eventoRepository) {
       this.inscricaoRepository = inscricaoRepository;
       this.usuarioRepository = usuarioRepository;
       this.eventoRepository = eventoRepository;
