@@ -1,38 +1,35 @@
-// application/usecases/RegistrarUsuarioUseCase.java
-package br.ueg.eventos.application.usecases;
+package br.ueg.eventos.application.usecase;
 
-import br.ueg.eventos.application.ports.in.RegistrarUsuarioPort;
-import br.ueg.eventos.application.ports.out.PasswordHasherPort;
-import br.ueg.eventos.application.ports.out.UsuarioRepositoryPort;
+import br.ueg.eventos.application.port.in.RegistrarUsuarioPort;
+import br.ueg.eventos.application.port.out.PasswordEncoderPort;
+import br.ueg.eventos.application.port.out.UsuarioRepositoryPort;
 import br.ueg.eventos.domain.exception.DomainRuleException;
 import br.ueg.eventos.domain.model.Usuario;
 
-import java.util.UUID;
+public class RegistrarUsuarioUseCase {
+    public class RegistrarUsuarioUseCase implements RegistrarUsuarioPort {
 
-public class RegistrarUsuarioUseCase implements RegistrarUsuarioPort {
+        private final UsuarioRepositoryPort usuarioRepository;
+        private final PasswordEncoderPort passwordEncoder;
 
-    private final UsuarioRepositoryPort usuarioRepository;
-    private final PasswordHasherPort passwordHasher;
-
-    public RegistrarUsuarioUseCase(UsuarioRepositoryPort usuarioRepository,
-                                    PasswordHasherPort passwordHasher) {
-        this.usuarioRepository = usuarioRepository;
-        this.passwordHasher = passwordHasher;
-    }
-
-    @Override
-    public Usuario executar(String nome, String email, String senhaPura) {
-        if (usuarioRepository.existePorEmail(email)) {
-            throw new DomainRuleException("Já existe um usuário cadastrado com este e-mail.");
+        public RegistrarUsuarioUseCase(UsuarioRepositoryPort usuarioRepository,
+                PasswordEncoderPort passwordEncoder) {
+            this.usuarioRepository = usuarioRepository;
+            this.passwordEncoder = passwordEncoder;
         }
 
-        String idGerado = UUID.randomUUID().toString();
-        String senhaHash = passwordHasher.gerarHash(senhaPura);
+        @Override
+        public void executar(String id, String nome, String email, String senhaLimpa) {
+            boolean emailEmUso = usuarioRepository.buscarPorEmail(email).isPresent();
+            if (emailEmUso) {
+                throw new DomainRuleException("Já existe um usuário cadastrado com esse e-mail.");
+            }
 
-        Usuario novoUsuario = Usuario.registrarNovo(idGerado, nome, email, senhaHash);
+            String senhaHash = passwordEncoder.encode(senhaLimpa);
 
-        usuarioRepository.salvar(novoUsuario);
+            Usuario novoUsuario = new Usuario(id, nome, email, senhaHash);
 
-        return novoUsuario;
+            usuarioRepository.salvar(novoUsuario);
+        }
     }
 }

@@ -1,4 +1,4 @@
-package br.ueg.eventos.application.ports.out;
+package br.ueg.eventos.application.port.out;
 
 import br.ueg.eventos.domain.model.Inscricao;
 import java.util.Optional;

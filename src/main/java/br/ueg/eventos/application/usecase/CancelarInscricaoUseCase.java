@@ -1,7 +1,7 @@
-package br.ueg.eventos.application.usecases;
+package br.ueg.eventos.application.usecase;
 
-import br.ueg.eventos.application.ports.in.CancelarInscricaoPort;
-import br.ueg.eventos.application.ports.out.InscricaoRepositoryPort;
+import br.ueg.eventos.application.port.in.CancelarInscricaoPort;
+import br.ueg.eventos.application.port.out.InscricaoRepositoryPort;
 import br.ueg.eventos.domain.exception.DomainRuleException;
 import br.ueg.eventos.domain.model.Inscricao;
 

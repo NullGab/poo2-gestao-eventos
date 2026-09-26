@@ -1,8 +1,8 @@
-package br.ueg.eventos.application.usecases;
+package br.ueg.eventos.application.usecase;
 
-import br.ueg.eventos.application.ports.in.SelecionarAtividadePort;
-import br.ueg.eventos.application.ports.out.AtividadeRepositoryPort;
-import br.ueg.eventos.application.ports.out.InscricaoRepositoryPort;
+import br.ueg.eventos.application.port.in.SelecionarAtividadePort;
+import br.ueg.eventos.application.port.out.AtividadeRepositoryPort;
+import br.ueg.eventos.application.port.out.InscricaoRepositoryPort;
 import br.ueg.eventos.domain.exception.DomainRuleException;
 import br.ueg.eventos.domain.model.Atividade;
 import br.ueg.eventos.domain.model.Inscricao;
@@ -13,7 +13,7 @@ public class SelecionarAtividadeUseCase implements SelecionarAtividadePort {
   private final AtividadeRepositoryPort atividadeRepository;
 
   public SelecionarAtividadeUseCase(InscricaoRepositoryPort inscricaoRepository,
-      AtividadeRepositoryPort atividadeRepository) {
+          AtividadeRepositoryPort atividadeRepository) {
     this.inscricaoRepository = inscricaoRepository;
     this.atividadeRepository = atividadeRepository;
   }
