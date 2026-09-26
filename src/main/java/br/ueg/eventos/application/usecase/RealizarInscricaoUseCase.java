@@ -13,7 +13,8 @@ import br.ueg.eventos.domain.model.Usuario;
 import java.time.ZonedDateTime;
 import java.util.UUID;
 
-public class RealizarInscricaoUseCase implements RealizarInscricaoPort {
+public class RealizarInscricaoUseCase implements 
+RealizarInscricaoPort {
 
     private final InscricaoRepositoryPort inscricaoRepository;
     private final UsuarioRepositoryPort usuarioRepository;
