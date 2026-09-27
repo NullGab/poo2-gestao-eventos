@@ -6,30 +6,29 @@ import br.ueg.eventos.application.port.out.UsuarioRepositoryPort;
 import br.ueg.eventos.domain.exception.DomainRuleException;
 import br.ueg.eventos.domain.model.Usuario;
 
-public class RegistrarUsuarioUseCase {
-    public class RegistrarUsuarioUseCase implements RegistrarUsuarioPort {
 
-        private final UsuarioRepositoryPort usuarioRepository;
-        private final PasswordEncoderPort passwordEncoder;
+public class RegistrarUsuarioUseCase implements RegistrarUsuarioPort {
+     private final UsuarioRepositoryPort usuarioRepository;
+     private final PasswordEncoderPort passwordEncoder;
 
-        public RegistrarUsuarioUseCase(UsuarioRepositoryPort usuarioRepository,
-                PasswordEncoderPort passwordEncoder) {
-            this.usuarioRepository = usuarioRepository;
-            this.passwordEncoder = passwordEncoder;
-        }
+     public RegistrarUsuarioUseCase(UsuarioRepositoryPort usuarioRepository,
+                                    PasswordEncoderPort passwordEncoder) {
+         this.usuarioRepository = usuarioRepository;
+         this.passwordEncoder = passwordEncoder;
+     }
 
-        @Override
-        public void executar(String id, String nome, String email, String senhaLimpa) {
-            boolean emailEmUso = usuarioRepository.buscarPorEmail(email).isPresent();
-            if (emailEmUso) {
-                throw new DomainRuleException("Já existe um usuário cadastrado com esse e-mail.");
-            }
+     @Override
+     public void executar(String id, String nome, String email, String senhaLimpa) {
+         boolean emailEmUso = usuarioRepository.buscarPorEmail(email).isPresent();
+         if (emailEmUso) {
+             throw new DomainRuleException("Já existe um usuário cadastrado com esse e-mail.");
+         }
 
-            String senhaHash = passwordEncoder.encode(senhaLimpa);
+         String senhaHash = passwordEncoder.encode(senhaLimpa);
 
-            Usuario novoUsuario = new Usuario(id, nome, email, senhaHash);
+         Usuario novoUsuario = Usuario.registrarNovo(id, nome, email, senhaHash);
 
-            usuarioRepository.salvar(novoUsuario);
-        }
-    }
+         usuarioRepository.salvar(novoUsuario);
+     }
 }
+

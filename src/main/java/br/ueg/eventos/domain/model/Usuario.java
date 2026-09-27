@@ -46,6 +46,15 @@ public class Usuario {
     this.funcoes.remove(funcao);
   }
 
+  public void atualizarDados(String novoNome, String novoEmail) {
+      Validador.avaliar(
+              new RegraTextoObrigatorio(novoNome, "O nome é obrigatório!"),
+              new RegraEmailValido(novoEmail)
+      );
+      this.nome = novoNome;
+      this.email = novoEmail;
+  }
+
   public boolean possuiFuncao(FuncaoUsuario funcao) {
     return this.funcoes.contains(funcao);
   }
