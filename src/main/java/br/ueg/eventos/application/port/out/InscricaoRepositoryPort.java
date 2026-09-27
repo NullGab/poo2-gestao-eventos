@@ -7,4 +7,5 @@ public interface InscricaoRepositoryPort {
   void salvar(Inscricao inscricao);
   boolean existeInscricaoParaEvento(String usuarioId, String eventoId);
   Optional<Inscricao> buscarPorId(String idInscricao);
+  void atualizar(Inscricao inscricao);
 }

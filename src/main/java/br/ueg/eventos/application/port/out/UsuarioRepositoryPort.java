@@ -7,4 +7,5 @@ public interface UsuarioRepositoryPort {
     Optional<Usuario> buscarPorId(String id);
     Optional<Usuario> buscarPorEmail(String email);
     Usuario salvar(Usuario usuario);
+    Optional<Usuario> buscarPorId(String id);
 }

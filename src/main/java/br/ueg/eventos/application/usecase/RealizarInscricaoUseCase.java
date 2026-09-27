@@ -45,7 +45,7 @@ RealizarInscricaoPort {
 
         String idGerado = UUID.randomUUID().toString();
         
-        Inscricao novaInscricao = Inscricao.criarNova(idGerado, usuario, evento, ZonedDateTime.now());
+        Inscricao novaInscricao = Inscricao.criarNova(idGerado, usuario, evento);
 
         inscricaoRepository.salvar(novaInscricao);
 
