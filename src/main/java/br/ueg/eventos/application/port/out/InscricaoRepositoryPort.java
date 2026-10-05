@@ -1,6 +1,7 @@
 package br.ueg.eventos.application.port.out;
 
 import br.ueg.eventos.domain.model.Inscricao;
+import java.util.List;
 import java.util.Optional;
 
 public interface InscricaoRepositoryPort {
@@ -8,4 +9,5 @@ public interface InscricaoRepositoryPort {
   boolean existeInscricaoParaEvento(String usuarioId, String eventoId);
   Optional<Inscricao> buscarPorId(String idInscricao);
   void atualizar(Inscricao inscricao);
+  List<String> buscarParticipantesPorAtividade(String atividade);
 }
