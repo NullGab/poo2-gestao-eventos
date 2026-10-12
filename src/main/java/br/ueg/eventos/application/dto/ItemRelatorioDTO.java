@@ -1,6 +1,6 @@
 package br.ueg.eventos.application.dto;
 
-public class ItemRelatorioDTO {
+public class  ItemRelatorioDTO {
     
     private final String atividade;
     private final String participante;

@@ -51,6 +51,9 @@ public class Atividade {
         if(vinculo == null) {
             throw new DomainRuleException("O vínculo de pessoa não pode ser nulo.");
         }
+        if(this.pessoasVinculadas.contains(vinculo)){
+            throw new DomainRuleException("Essa pessoa já possui um vinculo cadastrado!");
+        }
         this.pessoasVinculadas.add(vinculo);
     } 
 
@@ -76,8 +79,8 @@ public class Atividade {
 
     public Local getLocal() { return local; }
 
-    protected Boolean textOuVazio(String valor) {
-        return valor == null || valor.isBlank();
+    public List<VinculoPessoaAtividade> getPessoasVinculadas() {
+        return Collections.unmodifiableList(this.pessoasVinculadas);
     }
 
 }

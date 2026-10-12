@@ -125,7 +125,7 @@ public class Evento {
     return Collections.unmodifiableList(this.atividades);
   }
 
-  public List<Local> getLocaisDiponiveis() {
+  public List<Local> getLocaisDisponiveis() {
     return Collections.unmodifiableList(this.locaisDisponiveis); }
 
   public String getId() { return id; }
